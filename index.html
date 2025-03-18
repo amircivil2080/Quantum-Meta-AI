@@ -1,59 +1,96 @@
 <!DOCTYPE html>
 <html lang="fa">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quantum Meta AI</title>
-  <style>
-    body {
-      font-family: "Tahoma", sans-serif;
-      background-color: black;
-      color: #0f0;
-      text-align: center;
-      padding: 50px;
-    }
-    h1 {
-      font-size: 28px;
-      text-shadow: 0 0 10px #0f0;
-    }
-    .container {
-      border: 2px solid #0f0;
-      padding: 20px;
-      display: inline-block;
-      border-radius: 10px;
-      margin-top: 20px;
-    }
-    .hidden-link {
-      display: block;
-      color: red;
-      margin-top: 20px;
-    }
-    button {
-      background-color: #0f0;
-      color: black;
-      padding: 10px 20px;
-      border: none;
-      cursor: pointer;
-      font-size: 18px;
-      margin-top: 20px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Meta AI</title>
+    <style>
+        body {
+            font-family: "Courier New", monospace;
+            background-color: #000;
+            color: #0f0;
+            text-align: center;
+            direction: rtl;
+            padding: 50px;
+        }
+        h1 {
+            font-size: 24px;
+            text-shadow: 0 0 10px #0f0;
+        }
+        .container {
+            border: 2px solid #0f0;
+            padding: 20px;
+            display: inline-block;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 600px;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .input-field {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            background: #222;
+            color: #0f0;
+            border: 1px solid #0f0;
+            text-align: center;
+        }
+        .button {
+            display: inline-block;
+            background-color: #0f0;
+            color: #000;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+        #response {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            text-shadow: 0 0 10px #0f0;
+        }
+    </style>
 </head>
 <body>
 
-  <h1>Quantum Meta AI</h1>
-  <p>ابرهوش متاترونیک فعال شد!</p>
+    <h1>Quantum Meta AI</h1>
+    <div class="container">
+        <p>سؤال علمی خود را بپرسید:</p>
+        <input type="text" id="question" class="input-field" placeholder="مثلاً: ماهیت ماده تاریک چیست؟">
+        <button class="button" onclick="getAnswer()">ارسال</button>
+        <p id="response"></p>
+    </div>
 
-  <div class="container">
-    <p>ورود به شبکه مخفی:</p>
-    <a href="https://t.me/QuantumEconomyIR" target="_blank" class="hidden-link">ورود</a>
-  </div>
+    <p><a href="https://t.me/QuantumEconomyIR" target="_blank" class="button">🔗 ورود به تلگرام</a></p>
 
-  <button onclick="document.getElementById('bgMusic').play()">🔊 پخش صدا</button>
+    <audio id="bg-music" loop>
+        <source src="https://www.soundjay.com/button/sounds/beep-07.mp3" type="audio/mpeg">
+    </audio>
 
-  <audio id="bgMusic" loop>
-    <source src="https://samplelib.com/lib/preview/mp3/sample-15s.mp3" type="audio/mpeg">
-  </audio>
+    <script>
+        function getAnswer() {
+            var question = document.getElementById("question").value.trim();
+            var response = document.getElementById("response");
+
+            if (question === "") {
+                response.innerHTML = "لطفاً یک سؤال وارد کنید!";
+                return;
+            }
+
+            var answers = {
+                "ماده تاریک چیست؟": "ماده تاریک یک نوع ماده نامرئی است که فقط از طریق گرانش قابل مشاهده است.",
+                "کیهان چگونه شکل گرفت؟": "کیهان حدود ۱۳.۸ میلیارد سال پیش در یک انفجار عظیم به نام بیگ‌بنگ شکل گرفت.",
+                "مکانیک کوانتومی چیست؟": "مکانیک کوانتومی شاخه‌ای از فیزیک است که رفتار ذرات در مقیاس کوچک را توضیح می‌دهد."
+            };
+
+            response.innerHTML = answers[question] || "پاسخ این پرسش در حال پردازش است...";
+
+            document.getElementById("bg-music").play();
+        }
+    </script>
 
 </body>
 </html>
