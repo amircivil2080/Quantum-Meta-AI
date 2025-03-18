@@ -1,0 +1,33 @@
+/* quantum_style.css */
+body {
+    background-color: black;
+    color: #00ff00;
+    font-family: 'Courier New', monospace;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.dark-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.9);
+    color: #ff0000;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: glitch 1s infinite alternate;
+}
+
+@keyframes glitch {
+    0% {
+        text-shadow: 5px 5px 5px #ff0000, -5px -5px 5px #00ff00;
+    }
+    100% {
+        text-shadow: -5px -5px 5px #ff0000, 5px 5px 5px #00ff00;
+    }
+}
