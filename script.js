@@ -1,8 +1,9 @@
 document.addEventListener("DOMContentLoaded", function() {
     var audio = document.getElementById("bg-music");
-    var button = document.querySelector(".button");
+    var askButton = document.getElementById("ask-btn");
+    var musicButton = document.getElementById("play-music");
 
-    button.addEventListener("click", function() {
+    askButton.addEventListener("click", function() {
         var question = document.getElementById("question").value.trim();
         var response = document.getElementById("response");
 
@@ -18,9 +19,13 @@ document.addEventListener("DOMContentLoaded", function() {
         };
 
         response.innerHTML = answers[question] || "پاسخ این پرسش در حال پردازش است...";
+    });
 
+    musicButton.addEventListener("click", function() {
         if (audio.paused) {
             audio.play().catch(error => console.log("خطای پخش صدا:", error));
+        } else {
+            audio.pause();
         }
     });
 });
